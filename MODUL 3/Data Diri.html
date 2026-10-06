@@ -1,1015 +1,514 @@
-from pathlib import Path
-import shutil, zipfile
-
-base = Path("/mnt/data/profil_ilham_umpku")
-base.mkdir(parents=True, exist_ok=True)
-
-# Copy uploaded photo into the website folder
-src = Path("/mnt/data/d1d49216-dd90-418b-a0f0-acbec3809ac9.png")
-photo = base / "foto-profil.png"
-shutil.copy2(src, photo)
-
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Profil mahasiswa Ilham Ikhwanul Anam">
-  <title>Profil Ilham Ikhwanul Anam</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profil Ilham Ikhwanul Anam</title>
+
+    <!-- Menghubungkan HTML dengan CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Navigasi -->
-  <header class="header">
-    <nav class="navbar">
-      <a href="#beranda" class="brand">
-        <span class="brand-logo">IA</span>
-        <span>
-          <strong>Ilham Ikhwanul</strong>
-          <small>Profil Mahasiswa</small>
-        </span>
-      </a>
+    <!-- ================= NAVBAR ================= -->
+    <header class="header">
 
-      <div class="nav-menu">
-        <a href="#beranda">Beranda</a>
-        <a href="#profil">Profil</a>
-        <a href="#tentang">Tentang Saya</a>
-        <a href="#kontak">Kontak</a>
-      </div>
-    </nav>
-  </header>
+        <nav class="navbar">
 
-  <main>
+            <div class="logo">
+                <div class="logo-icon">
+                    IA
+                </div>
 
-    <!-- Hero -->
-    <section id="beranda" class="hero">
-      <div class="hero-content">
+                <div class="logo-text">
+                    <strong>ILHAM ANAM</strong>
+                    <span>Profil Mahasiswa</span>
+                </div>
+            </div>
 
-        <div class="hero-text">
-          <p class="eyebrow">PORTOFOLIO MAHASISWA</p>
+            <div class="menu">
+                <a href="#beranda">Beranda</a>
+                <a href="#profil">Profil</a>
+                <a href="#tentang">Tentang Saya</a>
+                <a href="#fokus">Fokus</a>
+                <a href="#kontak">Kontak</a>
+            </div>
 
-          <h1>
-            Halo, saya
-            <span>Ilham Ikhwanul Anam</span>
-          </h1>
+        </nav>
 
-          <p class="hero-description">
-            Mahasiswa D-IV Teknologi Rekayasa Elektromedis
-            di Universitas Muhammadiyah PKU Surakarta yang
-            memiliki ketertarikan pada teknologi elektromedis,
-            elektronika, dan pemrograman.
-          </p>
+    </header>
 
-          <div class="hero-buttons">
-            <a href="#profil" class="btn btn-primary">Lihat Profil ↓</a>
-            <a href="#kontak" class="btn btn-outline">Hubungi Saya</a>
-          </div>
+
+    <!-- ================= BERANDA ================= -->
+    <section class="hero" id="beranda">
+
+        <div class="hero-container">
+
+            <div class="hero-text">
+
+                <p class="label">
+                    MAHASISWA UMPKU SURAKARTA
+                </p>
+
+                <h1>
+                    Halo, Saya
+                    <span>Ilham Ikhwanul Anam</span>
+                </h1>
+
+                <p class="hero-description">
+                    Mahasiswa D-IV Teknologi Rekayasa Elektromedis
+                    yang memiliki ketertarikan terhadap teknologi
+                    elektromedis, elektronika, dan pemrograman.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#profil" class="btn btn-primary">
+                        Lihat Profil
+                    </a>
+
+                    <a href="#tentang" class="btn btn-secondary">
+                        Tentang Saya
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOTO -->
+            <div class="hero-photo">
+
+                <div class="photo-frame">
+
+                    <img
+                        src="foto-ilham.jpg"
+                        alt="Foto Ilham Ikhwanul Anam"
+                    >
+
+                </div>
+
+                <div class="photo-card">
+
+                    <strong>
+                        Ilham Ikhwanul Anam
+                    </strong>
+
+                    <span>
+                        Teknologi Rekayasa Elektromedis
+                    </span>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="hero-photo">
-          <div class="photo-frame">
-            <img src="foto-profil.png" alt="Foto Ilham Ikhwanul Anam">
-          </div>
-          <div class="photo-badge">
-            <strong>Mahasiswa</strong>
-            <span>Teknologi Rekayasa Elektromedis</span>
-          </div>
-        </div>
-
-      </div>
     </section>
 
-    <!-- Informasi singkat -->
-    <section class="quick-info">
-      <div class="info-box">
-        <span class="info-number">01</span>
+
+    <!-- ================= PROFIL ================= -->
+    <section class="section" id="profil">
+
+        <div class="section-title">
+
+            <p class="label">
+                DATA DIRI
+            </p>
+
+            <h2>
+                Profil <span>Mahasiswa</span>
+            </h2>
+
+            <p>
+                Informasi singkat mengenai diri saya.
+            </p>
+
+        </div>
+
+
+        <div class="profile-container">
+
+            <!-- FOTO PROFIL -->
+
+            <div class="profile-photo-card">
+
+                <div class="profile-photo">
+
+                    <img
+                        src="foto-ilham.jpg"
+                        alt="Foto Profil Ilham Ikhwanul Anam"
+                    >
+
+                </div>
+
+                <h3>
+                    Ilham Ikhwanul Anam
+                </h3>
+
+                <p class="nim">
+                    NIM: 1202405018
+                </p>
+
+                <div class="status">
+                    <span></span>
+                    Mahasiswa
+                </div>
+
+            </div>
+
+
+            <!-- DATA DIRI -->
+
+            <div class="data-card">
+
+                <div class="data-row">
+
+                    <span>Nama</span>
+
+                    <strong>
+                        Ilham Ikhwanul Anam
+                    </strong>
+
+                </div>
+
+
+                <div class="data-row">
+
+                    <span>NIM</span>
+
+                    <strong>
+                        1202405018
+                    </strong>
+
+                </div>
+
+
+                <div class="data-row">
+
+                    <span>Program Studi</span>
+
+                    <strong>
+                        D-IV Teknologi Rekayasa Elektromedis
+                    </strong>
+
+                </div>
+
+
+                <div class="data-row">
+
+                    <span>Universitas</span>
+
+                    <strong>
+                        Universitas Muhammadiyah PKU Surakarta
+                    </strong>
+
+                </div>
+
+
+                <div class="data-row">
+
+                    <span>Status</span>
+
+                    <strong>
+                        Mahasiswa
+                    </strong>
+
+                </div>
+
+
+                <div class="data-row">
+
+                    <span>Fokus</span>
+
+                    <strong>
+                        Teknologi elektromedis,
+                        elektronika, dan pemrograman
+                    </strong>
+
+                </div>
+
+
+                <div class="data-row">
+
+                    <span>Hobi</span>
+
+                    <strong>
+                        Memancing
+                    </strong>
+
+                </div>
+
+
+                <div class="data-row">
+
+                    <span>Email</span>
+
+                    <strong>
+                        ilhamikwanul@gmail.com
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TENTANG SAYA ================= -->
+    <section class="section about-section" id="tentang">
+
+        <div class="about-container">
+
+            <div class="section-title">
+
+                <p class="label">
+                    TENTANG SAYA
+                </p>
+
+                <h2>
+                    Mengenal <span>Lebih Dekat</span>
+                </h2>
+
+            </div>
+
+
+            <div class="about-text">
+
+                <p>
+                    Halo, saya
+                    <strong>Ilham Ikhwanul Anam</strong>,
+                    mahasiswa Program Studi
+                    <strong>D-IV Teknologi Rekayasa Elektromedis</strong>
+                    di
+                    <strong>Universitas Muhammadiyah PKU Surakarta</strong>.
+                    Saya memiliki ketertarikan terhadap perkembangan
+                    teknologi, khususnya dalam bidang teknologi
+                    elektromedis, elektronika, dan pemrograman.
+                </p>
+
+
+                <p>
+                    Melalui proses perkuliahan dan praktikum,
+                    saya terus berusaha mengembangkan kemampuan
+                    dalam memahami, merancang, mengoperasikan,
+                    serta melakukan pemeliharaan berbagai teknologi
+                    dan peralatan elektromedis.
+                </p>
+
+
+                <p>
+                    Saya juga tertarik untuk mempelajari bagaimana
+                    elektronika dan pemrograman dapat diterapkan
+                    dalam bidang kesehatan untuk menghasilkan
+                    teknologi yang bermanfaat.
+                </p>
+
+
+                <p>
+                    Saya memiliki semangat untuk terus belajar,
+                    mengembangkan keterampilan, dan memperoleh
+                    pengalaman baru sebagai bekal untuk menghadapi
+                    dunia kerja di bidang teknologi elektromedis.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOKUS ================= -->
+    <section class="section" id="fokus">
+
+        <div class="section-title center">
+
+            <p class="label">
+                BIDANG YANG DIMINATI
+            </p>
+
+            <h2>
+                Fokus <span>Pembelajaran</span>
+            </h2>
+
+            <p>
+                Beberapa bidang yang menjadi fokus saya
+                selama menjalani perkuliahan.
+            </p>
+
+        </div>
+
+
+        <div class="focus-grid">
+
+
+            <!-- KARTU 1 -->
+
+            <div class="focus-card">
+
+                <div class="focus-icon">
+                    ⚕
+                </div>
+
+                <h3>
+                    Teknologi Elektromedis
+                </h3>
+
+                <p>
+                    Mempelajari teknologi dan peralatan
+                    elektromedis serta cara pengoperasian
+                    dan pemeliharaannya.
+                </p>
+
+            </div>
+
+
+            <!-- KARTU 2 -->
+
+            <div class="focus-card">
+
+                <div class="focus-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Elektronika
+                </h3>
+
+                <p>
+                    Mempelajari komponen elektronika,
+                    rangkaian listrik, sistem kendali,
+                    dan penerapannya.
+                </p>
+
+            </div>
+
+
+            <!-- KARTU 3 -->
+
+            <div class="focus-card">
+
+                <div class="focus-icon">
+                    &lt;/&gt;
+                </div>
+
+                <h3>
+                    Pemrograman
+                </h3>
+
+                <p>
+                    Mengembangkan kemampuan pemrograman
+                    untuk membuat sistem dan aplikasi
+                    yang mendukung teknologi kesehatan.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= HOBI ================= -->
+    <section class="hobi-section">
+
+        <div class="hobi-container">
+
+            <div>
+
+                <p class="label">
+                    HOBI
+                </p>
+
+                <h2>
+                    Memancing
+                </h2>
+
+                <p>
+                    Memancing merupakan salah satu kegiatan
+                    yang saya sukai untuk mengisi waktu luang
+                    dan menikmati suasana di luar aktivitas
+                    perkuliahan.
+                </p>
+
+            </div>
+
+            <div class="hobi-icon">
+                🎣
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= KONTAK ================= -->
+    <section class="contact-section" id="kontak">
+
         <div>
-          <strong>Program Studi</strong>
-          <p>D-IV Teknologi Rekayasa Elektromedis</p>
-        </div>
-      </div>
 
-      <div class="info-box">
-        <span class="info-number">02</span>
+            <p class="label">
+                KONTAK
+            </p>
+
+            <h2>
+                Mari Terhubung
+            </h2>
+
+            <p>
+                Untuk informasi atau keperluan akademik,
+                silakan menghubungi saya melalui email.
+            </p>
+
+        </div>
+
+
+        <a
+            href="mailto:ilhamikwanul@gmail.com"
+            class="email-button"
+        >
+            ✉ Kirim Email
+        </a>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
         <div>
-          <strong>Universitas</strong>
-          <p>Universitas Muhammadiyah PKU Surakarta</p>
-        </div>
-      </div>
 
-      <div class="info-box">
-        <span class="info-number">03</span>
+            <strong>
+                Ilham Ikhwanul Anam
+            </strong>
+
+            <p>
+                D-IV Teknologi Rekayasa Elektromedis
+            </p>
+
+        </div>
+
+
         <div>
-          <strong>Hobi</strong>
-          <p>Memancing</p>
-        </div>
-      </div>
 
-      <div class="info-box">
-        <span class="info-number">04</span>
-        <div>
-          <strong>Fokus</strong>
-          <p>Elektromedis, elektronika & pemrograman</p>
-        </div>
-      </div>
-    </section>
+            <p>
+                Universitas Muhammadiyah PKU Surakarta
+            </p>
 
-    <!-- Profil -->
-    <section id="profil" class="section profile-section">
-      <div class="section-heading">
-        <p class="section-label">DATA DIRI</p>
-        <h2>Profil <span>Mahasiswa</span></h2>
-        <p>
-          Informasi singkat mengenai identitas dan latar belakang
-          pendidikan saya.
-        </p>
-      </div>
-
-      <div class="profile-grid">
-
-        <div class="profile-card">
-          <div class="profile-avatar">
-            <img src="foto-profil.png" alt="Foto profil Ilham Ikhwanul Anam">
-          </div>
-
-          <h3>Ilham Ikhwanul Anam</h3>
-          <p class="nim">NIM 1202405018</p>
-
-          <div class="status">
-            <span class="status-dot"></span>
-            Mahasiswa Aktif
-          </div>
-        </div>
-
-        <div class="data-card">
-
-          <div class="data-row">
-            <span>Nama Lengkap</span>
-            <strong>Ilham Ikhwanul Anam</strong>
-          </div>
-
-          <div class="data-row">
-            <span>NIM</span>
-            <strong>1202405018</strong>
-          </div>
-
-          <div class="data-row">
-            <span>Program Studi</span>
-            <strong>D-IV Teknologi Rekayasa Elektromedis</strong>
-          </div>
-
-          <div class="data-row">
-            <span>Universitas</span>
-            <strong>Universitas Muhammadiyah PKU Surakarta</strong>
-          </div>
-
-          <div class="data-row">
-            <span>Status</span>
-            <strong>Mahasiswa</strong>
-          </div>
-
-          <div class="data-row">
-            <span>Hobi</span>
-            <strong>Memancing</strong>
-          </div>
-
-          <div class="data-row">
-            <span>Email</span>
-            <strong>ilhamikwanul@gmail.com</strong>
-          </div>
+            <p>
+                © 2026 Ilham Ikhwanul Anam
+            </p>
 
         </div>
-      </div>
-    </section>
 
-    <!-- Tentang saya -->
-    <section id="tentang" class="section about-section">
-      <div class="about-content">
+    </footer>
 
-        <div class="about-title">
-          <p class="section-label">TENTANG SAYA</p>
-          <h2>Belajar, <span>Berkarya,</span> dan Berinovasi.</h2>
-        </div>
-
-        <div class="about-text">
-          <p>
-            Halo, saya <strong>Ilham Ikhwanul Anam</strong>, mahasiswa
-            Program Studi <strong>D-IV Teknologi Rekayasa Elektromedis</strong>
-            di <strong>Universitas Muhammadiyah PKU Surakarta</strong>.
-            Saya memiliki ketertarikan terhadap perkembangan teknologi,
-            khususnya dalam bidang teknologi elektromedis, elektronika,
-            dan pemrograman.
-          </p>
-
-          <p>
-            Melalui proses perkuliahan dan praktikum, saya terus berusaha
-            mengembangkan kemampuan dalam memahami, merancang,
-            mengoperasikan, serta melakukan pemeliharaan berbagai teknologi
-            dan peralatan elektromedis.
-          </p>
-
-          <p>
-            Saya juga tertarik untuk mempelajari bagaimana elektronika dan
-            pemrograman dapat diterapkan dalam bidang kesehatan untuk
-            menghasilkan teknologi yang bermanfaat. Saya memiliki semangat
-            untuk terus belajar, mengembangkan keterampilan, dan memperoleh
-            pengalaman baru sebagai bekal menghadapi dunia kerja di bidang
-            teknologi elektromedis.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Fokus -->
-    <section class="section focus-section">
-      <div class="section-heading center">
-        <p class="section-label">BIDANG YANG DIMINATI</p>
-        <h2>Fokus <span>Saya</span></h2>
-      </div>
-
-      <div class="focus-grid">
-        <article class="focus-card">
-          <div class="focus-icon">⚕</div>
-          <h3>Teknologi Elektromedis</h3>
-          <p>
-            Mempelajari teknologi, pengoperasian, pemeliharaan,
-            dan penerapan peralatan elektromedis.
-          </p>
-        </article>
-
-        <article class="focus-card">
-          <div class="focus-icon">⚡</div>
-          <h3>Elektronika</h3>
-          <p>
-            Memahami rangkaian elektronika dan penerapannya
-            pada sistem peralatan kesehatan.
-          </p>
-        </article>
-
-        <article class="focus-card">
-          <div class="focus-icon">&lt;/&gt;</div>
-          <h3>Pemrograman</h3>
-          <p>
-            Mengembangkan kemampuan pemrograman untuk
-            mendukung sistem dan teknologi elektromedis.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Kontak -->
-    <section id="kontak" class="contact-section">
-      <div>
-        <p class="section-label">KONTAK</p>
-        <h2>Mari Terhubung</h2>
-        <p>
-          Untuk informasi lebih lanjut, kamu dapat menghubungi saya
-          melalui email.
-        </p>
-      </div>
-
-      <a class="contact-button" href="mailto:ilhamikwanul@gmail.com">
-        ✉ ilhamikwanul@gmail.com
-      </a>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div>
-      <strong>Ilham Ikhwanul Anam</strong>
-      <p>D-IV Teknologi Rekayasa Elektromedis</p>
-    </div>
-
-    <p>© 2026 Ilham Ikhwanul Anam</p>
-  </footer>
 
 </body>
 </html>
-'''
-
-css = r'''/* =========================================================
-   WEBSITE PROFIL - ILHAM IKHWANUL ANAM
-   File: style.css
-   ========================================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #172033;
-  background: #f7f9fc;
-  line-height: 1.6;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid #e7ebf2;
-  backdrop-filter: blur(10px);
-}
-
-.navbar {
-  width: min(1150px, 92%);
-  min-height: 76px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-logo {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: #173f7a;
-  color: white;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.brand strong {
-  display: block;
-  color: #172033;
-  font-size: 15px;
-}
-
-.brand small {
-  display: block;
-  color: #718096;
-  font-size: 12px;
-}
-
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.nav-menu a {
-  color: #4a5568;
-  font-size: 14px;
-  font-weight: 600;
-  transition: 0.25s;
-}
-
-.nav-menu a:hover {
-  color: #173f7a;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 650px;
-  display: flex;
-  align-items: center;
-  background:
-    radial-gradient(circle at 80% 25%, rgba(57, 119, 211, 0.14), transparent 30%),
-    linear-gradient(135deg, #eef5ff 0%, #ffffff 58%, #f4f8fd 100%);
-  overflow: hidden;
-}
-
-.hero-content {
-  width: min(1150px, 92%);
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  align-items: center;
-  gap: 70px;
-  padding: 80px 0;
-}
-
-.eyebrow,
-.section-label {
-  color: #2d6bb3;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.hero h1 {
-  margin-top: 14px;
-  max-width: 650px;
-  color: #14213a;
-  font-size: clamp(42px, 5vw, 68px);
-  line-height: 1.05;
-  letter-spacing: -2px;
-}
-
-.hero h1 span {
-  display: block;
-  color: #2164a5;
-}
-
-.hero-description {
-  max-width: 610px;
-  margin-top: 25px;
-  color: #5c687c;
-  font-size: 17px;
-}
-
-.hero-buttons {
-  margin-top: 34px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 13px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 0 22px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  transition: 0.25s;
-}
-
-.btn-primary {
-  background: #173f7a;
-  color: white;
-  box-shadow: 0 8px 22px rgba(23, 63, 122, 0.18);
-}
-
-.btn-primary:hover {
-  background: #0e315f;
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  border: 1px solid #cbd5e1;
-  background: white;
-  color: #173f7a;
-}
-
-.btn-outline:hover {
-  border-color: #173f7a;
-  transform: translateY(-2px);
-}
-
-/* FOTO */
-
-.hero-photo {
-  position: relative;
-  max-width: 470px;
-  margin-left: auto;
-}
-
-.photo-frame {
-  position: relative;
-  padding: 13px;
-  border-radius: 26px;
-  background: white;
-  box-shadow: 0 25px 60px rgba(32, 57, 92, 0.18);
-  transform: rotate(2deg);
-}
-
-.photo-frame::before {
-  content: "";
-  position: absolute;
-  inset: -14px;
-  border: 2px solid rgba(45, 107, 179, 0.18);
-  border-radius: 31px;
-  z-index: -1;
-}
-
-.photo-frame img {
-  display: block;
-  width: 100%;
-  height: 520px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 17px;
-}
-
-.photo-badge {
-  position: absolute;
-  left: -25px;
-  bottom: 28px;
-  width: 235px;
-  padding: 15px 18px;
-  background: white;
-  border-radius: 13px;
-  box-shadow: 0 15px 35px rgba(32, 57, 92, 0.18);
-}
-
-.photo-badge strong {
-  display: block;
-  color: #173f7a;
-  font-size: 14px;
-}
-
-.photo-badge span {
-  display: block;
-  margin-top: 3px;
-  color: #718096;
-  font-size: 12px;
-  line-height: 1.4;
-}
-
-/* INFO */
-
-.quick-info {
-  width: min(1150px, 92%);
-  margin: -35px auto 0;
-  position: relative;
-  z-index: 5;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  background: white;
-  border: 1px solid #e5eaf1;
-  border-radius: 16px;
-  box-shadow: 0 18px 45px rgba(35, 56, 85, 0.09);
-  overflow: hidden;
-}
-
-.info-box {
-  display: flex;
-  gap: 13px;
-  padding: 25px 20px;
-  border-right: 1px solid #edf0f5;
-}
-
-.info-box:last-child {
-  border-right: none;
-}
-
-.info-number {
-  color: #2d6bb3;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.info-box strong {
-  display: block;
-  color: #1d293d;
-  font-size: 13px;
-}
-
-.info-box p {
-  margin-top: 3px;
-  color: #718096;
-  font-size: 12px;
-  line-height: 1.4;
-}
-
-/* SECTION */
-
-.section {
-  width: min(1150px, 92%);
-  margin: auto;
-  padding: 105px 0;
-}
-
-.section-heading {
-  max-width: 680px;
-  margin-bottom: 45px;
-}
-
-.section-heading.center {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.section-heading h2,
-.about-title h2,
-.contact-section h2 {
-  margin-top: 8px;
-  color: #14213a;
-  font-size: clamp(32px, 4vw, 48px);
-  line-height: 1.1;
-  letter-spacing: -1px;
-}
-
-.section-heading h2 span,
-.about-title h2 span {
-  color: #2164a5;
-}
-
-.section-heading > p:last-child {
-  margin-top: 14px;
-  color: #718096;
-}
-
-/* PROFIL */
-
-.profile-grid {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 30px;
-  align-items: stretch;
-}
-
-.profile-card,
-.data-card {
-  background: white;
-  border: 1px solid #e5eaf1;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(35, 56, 85, 0.06);
-}
-
-.profile-card {
-  padding: 35px 25px;
-  text-align: center;
-}
-
-.profile-avatar {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 20px;
-  padding: 6px;
-  border-radius: 50%;
-  background: #e9f2ff;
-}
-
-.profile-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-}
-
-.profile-card h3 {
-  color: #172033;
-  font-size: 20px;
-}
-
-.nim {
-  margin-top: 3px;
-  color: #718096;
-  font-size: 13px;
-}
-
-.status {
-  width: fit-content;
-  margin: 16px auto 0;
-  padding: 7px 12px;
-  border-radius: 20px;
-  background: #eef8f2;
-  color: #28784a;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.status-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 5px;
-  border-radius: 50%;
-  background: #35a963;
-}
-
-.data-card {
-  padding: 12px 28px;
-}
-
-.data-row {
-  min-height: 65px;
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  align-items: center;
-  gap: 20px;
-  border-bottom: 1px solid #edf0f5;
-}
-
-.data-row:last-child {
-  border-bottom: none;
-}
-
-.data-row span {
-  color: #718096;
-  font-size: 13px;
-}
-
-.data-row strong {
-  color: #27364d;
-  font-size: 14px;
-}
-
-/* TENTANG */
-
-.about-section {
-  width: 100%;
-  max-width: none;
-  padding-left: max(4%, calc((100% - 1150px) / 2));
-  padding-right: max(4%, calc((100% - 1150px) / 2));
-  background: #edf5ff;
-}
-
-.about-content {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 80px;
-}
-
-.about-title h2 {
-  margin-top: 10px;
-  max-width: 420px;
-}
-
-.about-text {
-  color: #536174;
-  font-size: 16px;
-}
-
-.about-text p + p {
-  margin-top: 18px;
-}
-
-.about-text strong {
-  color: #24334a;
-}
-
-/* FOKUS */
-
-.focus-section {
-  background: #f7f9fc;
-}
-
-.focus-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.focus-card {
-  padding: 32px;
-  background: white;
-  border: 1px solid #e5eaf1;
-  border-radius: 18px;
-  transition: 0.25s;
-}
-
-.focus-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 40px rgba(35, 56, 85, 0.1);
-}
-
-.focus-icon {
-  width: 52px;
-  height: 52px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 20px;
-  border-radius: 14px;
-  background: #eaf3ff;
-  color: #2164a5;
-  font-size: 23px;
-  font-weight: 800;
-}
-
-.focus-card h3 {
-  color: #1c2b42;
-  font-size: 18px;
-}
-
-.focus-card p {
-  margin-top: 9px;
-  color: #718096;
-  font-size: 14px;
-}
-
-/* KONTAK */
-
-.contact-section {
-  width: min(1150px, 92%);
-  margin: 0 auto 80px;
-  padding: 50px 55px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  border-radius: 22px;
-  background: #173f7a;
-  color: white;
-}
-
-.contact-section h2 {
-  color: white;
-  margin-top: 6px;
-}
-
-.contact-section .section-label {
-  color: #bcd9fa;
-}
-
-.contact-section > div > p:last-child {
-  margin-top: 8px;
-  color: #d8e6f7;
-}
-
-.contact-button {
-  display: inline-flex;
-  align-items: center;
-  min-height: 50px;
-  padding: 0 20px;
-  border-radius: 10px;
-  background: white;
-  color: #173f7a;
-  font-size: 14px;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: 0.25s;
-}
-
-.contact-button:hover {
-  transform: translateY(-2px);
-}
-
-/* FOOTER */
-
-.footer {
-  padding: 35px max(4%, calc((100% - 1150px) / 2));
-  display: flex;
-  justify-content: space-between;
-  gap: 25px;
-  background: #101b2e;
-  color: white;
-}
-
-.footer strong {
-  font-size: 15px;
-}
-
-.footer p {
-  margin-top: 3px;
-  color: #aab6c8;
-  font-size: 12px;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
-  .nav-menu {
-    gap: 16px;
-  }
-
-  .hero-content,
-  .about-content {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-content {
-    gap: 50px;
-  }
-
-  .hero-photo {
-    margin: auto;
-    width: min(450px, 100%);
-  }
-
-  .quick-info {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .info-box:nth-child(2) {
-    border-right: none;
-  }
-
-  .info-box:nth-child(-n+2) {
-    border-bottom: 1px solid #edf0f5;
-  }
-
-  .profile-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-card {
-    max-width: 450px;
-    margin: auto;
-    width: 100%;
-  }
-
-  .focus-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-section {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 650px) {
-  .navbar {
-    min-height: auto;
-    padding: 15px 0;
-    align-items: flex-start;
-  }
-
-  .nav-menu {
-    display: none;
-  }
-
-  .hero-content {
-    padding: 65px 0 90px;
-  }
-
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  .hero-description {
-    font-size: 15px;
-  }
-
-  .photo-frame img {
-    height: 430px;
-  }
-
-  .photo-badge {
-    left: 12px;
-    bottom: 20px;
-  }
-
-  .quick-info {
-    grid-template-columns: 1fr;
-    margin-top: -25px;
-  }
-
-  .info-box {
-    border-right: none;
-    border-bottom: 1px solid #edf0f5;
-  }
-
-  .info-box:last-child {
-    border-bottom: none;
-  }
-
-  .section {
-    padding: 75px 0;
-  }
-
-  .data-card {
-    padding: 10px 20px;
-  }
-
-  .data-row {
-    grid-template-columns: 1fr;
-    gap: 3px;
-    padding: 14px 0;
-  }
-
-  .about-content {
-    gap: 35px;
-  }
-
-  .contact-section {
-    padding: 35px 25px;
-    margin-bottom: 55px;
-  }
-
-  .contact-button {
-    white-space: normal;
-  }
-
-  .footer {
-    flex-direction: column;
-  }
-}
-'''
-
-(base / "index.html").write_text(html, encoding="utf-8")
-(base / "style.css").write_text(css, encoding="utf-8")
-
-# Make a ZIP that can be extracted directly in VS Code
-zip_path = Path("/mnt/data/Profil_Ilham_Ikhwanul_Anam_VSCode.zip")
-with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
-    for file in base.iterdir():
-        z.write(file, arcname=file.name)
-
-print(f"Folder dibuat: {base}")
-print(f"ZIP dibuat: {zip_path}")
