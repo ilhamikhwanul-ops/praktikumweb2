@@ -1,9 +1,302 @@
-/* =========================================================
-   WEBSITE PROFIL ILHAM IKHWANUL ANAM
+from pathlib import Path
+import shutil, zipfile
+
+base = Path("/mnt/data/profil_ilham_umpku")
+base.mkdir(parents=True, exist_ok=True)
+
+# Copy uploaded photo into the website folder
+src = Path("/mnt/data/d1d49216-dd90-418b-a0f0-acbec3809ac9.png")
+photo = base / "foto-profil.png"
+shutil.copy2(src, photo)
+
+html = r'''<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Profil mahasiswa Ilham Ikhwanul Anam">
+  <title>Profil Ilham Ikhwanul Anam</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Navigasi -->
+  <header class="header">
+    <nav class="navbar">
+      <a href="#beranda" class="brand">
+        <span class="brand-logo">IA</span>
+        <span>
+          <strong>Ilham Ikhwanul</strong>
+          <small>Profil Mahasiswa</small>
+        </span>
+      </a>
+
+      <div class="nav-menu">
+        <a href="#beranda">Beranda</a>
+        <a href="#profil">Profil</a>
+        <a href="#tentang">Tentang Saya</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section id="beranda" class="hero">
+      <div class="hero-content">
+
+        <div class="hero-text">
+          <p class="eyebrow">PORTOFOLIO MAHASISWA</p>
+
+          <h1>
+            Halo, saya
+            <span>Ilham Ikhwanul Anam</span>
+          </h1>
+
+          <p class="hero-description">
+            Mahasiswa D-IV Teknologi Rekayasa Elektromedis
+            di Universitas Muhammadiyah PKU Surakarta yang
+            memiliki ketertarikan pada teknologi elektromedis,
+            elektronika, dan pemrograman.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#profil" class="btn btn-primary">Lihat Profil ↓</a>
+            <a href="#kontak" class="btn btn-outline">Hubungi Saya</a>
+          </div>
+        </div>
+
+        <div class="hero-photo">
+          <div class="photo-frame">
+            <img src="foto-profil.png" alt="Foto Ilham Ikhwanul Anam">
+          </div>
+          <div class="photo-badge">
+            <strong>Mahasiswa</strong>
+            <span>Teknologi Rekayasa Elektromedis</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Informasi singkat -->
+    <section class="quick-info">
+      <div class="info-box">
+        <span class="info-number">01</span>
+        <div>
+          <strong>Program Studi</strong>
+          <p>D-IV Teknologi Rekayasa Elektromedis</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <span class="info-number">02</span>
+        <div>
+          <strong>Universitas</strong>
+          <p>Universitas Muhammadiyah PKU Surakarta</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <span class="info-number">03</span>
+        <div>
+          <strong>Hobi</strong>
+          <p>Memancing</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <span class="info-number">04</span>
+        <div>
+          <strong>Fokus</strong>
+          <p>Elektromedis, elektronika & pemrograman</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profil -->
+    <section id="profil" class="section profile-section">
+      <div class="section-heading">
+        <p class="section-label">DATA DIRI</p>
+        <h2>Profil <span>Mahasiswa</span></h2>
+        <p>
+          Informasi singkat mengenai identitas dan latar belakang
+          pendidikan saya.
+        </p>
+      </div>
+
+      <div class="profile-grid">
+
+        <div class="profile-card">
+          <div class="profile-avatar">
+            <img src="foto-profil.png" alt="Foto profil Ilham Ikhwanul Anam">
+          </div>
+
+          <h3>Ilham Ikhwanul Anam</h3>
+          <p class="nim">NIM 1202405018</p>
+
+          <div class="status">
+            <span class="status-dot"></span>
+            Mahasiswa Aktif
+          </div>
+        </div>
+
+        <div class="data-card">
+
+          <div class="data-row">
+            <span>Nama Lengkap</span>
+            <strong>Ilham Ikhwanul Anam</strong>
+          </div>
+
+          <div class="data-row">
+            <span>NIM</span>
+            <strong>1202405018</strong>
+          </div>
+
+          <div class="data-row">
+            <span>Program Studi</span>
+            <strong>D-IV Teknologi Rekayasa Elektromedis</strong>
+          </div>
+
+          <div class="data-row">
+            <span>Universitas</span>
+            <strong>Universitas Muhammadiyah PKU Surakarta</strong>
+          </div>
+
+          <div class="data-row">
+            <span>Status</span>
+            <strong>Mahasiswa</strong>
+          </div>
+
+          <div class="data-row">
+            <span>Hobi</span>
+            <strong>Memancing</strong>
+          </div>
+
+          <div class="data-row">
+            <span>Email</span>
+            <strong>ilhamikwanul@gmail.com</strong>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Tentang saya -->
+    <section id="tentang" class="section about-section">
+      <div class="about-content">
+
+        <div class="about-title">
+          <p class="section-label">TENTANG SAYA</p>
+          <h2>Belajar, <span>Berkarya,</span> dan Berinovasi.</h2>
+        </div>
+
+        <div class="about-text">
+          <p>
+            Halo, saya <strong>Ilham Ikhwanul Anam</strong>, mahasiswa
+            Program Studi <strong>D-IV Teknologi Rekayasa Elektromedis</strong>
+            di <strong>Universitas Muhammadiyah PKU Surakarta</strong>.
+            Saya memiliki ketertarikan terhadap perkembangan teknologi,
+            khususnya dalam bidang teknologi elektromedis, elektronika,
+            dan pemrograman.
+          </p>
+
+          <p>
+            Melalui proses perkuliahan dan praktikum, saya terus berusaha
+            mengembangkan kemampuan dalam memahami, merancang,
+            mengoperasikan, serta melakukan pemeliharaan berbagai teknologi
+            dan peralatan elektromedis.
+          </p>
+
+          <p>
+            Saya juga tertarik untuk mempelajari bagaimana elektronika dan
+            pemrograman dapat diterapkan dalam bidang kesehatan untuk
+            menghasilkan teknologi yang bermanfaat. Saya memiliki semangat
+            untuk terus belajar, mengembangkan keterampilan, dan memperoleh
+            pengalaman baru sebagai bekal menghadapi dunia kerja di bidang
+            teknologi elektromedis.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Fokus -->
+    <section class="section focus-section">
+      <div class="section-heading center">
+        <p class="section-label">BIDANG YANG DIMINATI</p>
+        <h2>Fokus <span>Saya</span></h2>
+      </div>
+
+      <div class="focus-grid">
+        <article class="focus-card">
+          <div class="focus-icon">⚕</div>
+          <h3>Teknologi Elektromedis</h3>
+          <p>
+            Mempelajari teknologi, pengoperasian, pemeliharaan,
+            dan penerapan peralatan elektromedis.
+          </p>
+        </article>
+
+        <article class="focus-card">
+          <div class="focus-icon">⚡</div>
+          <h3>Elektronika</h3>
+          <p>
+            Memahami rangkaian elektronika dan penerapannya
+            pada sistem peralatan kesehatan.
+          </p>
+        </article>
+
+        <article class="focus-card">
+          <div class="focus-icon">&lt;/&gt;</div>
+          <h3>Pemrograman</h3>
+          <p>
+            Mengembangkan kemampuan pemrograman untuk
+            mendukung sistem dan teknologi elektromedis.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="contact-section">
+      <div>
+        <p class="section-label">KONTAK</p>
+        <h2>Mari Terhubung</h2>
+        <p>
+          Untuk informasi lebih lanjut, kamu dapat menghubungi saya
+          melalui email.
+        </p>
+      </div>
+
+      <a class="contact-button" href="mailto:ilhamikwanul@gmail.com">
+        ✉ ilhamikwanul@gmail.com
+      </a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>
+      <strong>Ilham Ikhwanul Anam</strong>
+      <p>D-IV Teknologi Rekayasa Elektromedis</p>
+    </div>
+
+    <p>© 2026 Ilham Ikhwanul Anam</p>
+  </footer>
+
+</body>
+</html>
+'''
+
+css = r'''/* =========================================================
+   WEBSITE PROFIL - ILHAM IKHWANUL ANAM
    File: style.css
    ========================================================= */
 
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -26,10 +319,6 @@ a {
   color: inherit;
 }
 
-/* =========================================================
-   NAVBAR
-   ========================================================= */
-
 .header {
   position: sticky;
   top: 0;
@@ -43,15 +332,11 @@ a {
   width: min(1150px, 92%);
   min-height: 76px;
   margin: auto;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 30px;
 }
-
-/* Logo */
 
 .brand {
   display: flex;
@@ -62,34 +347,26 @@ a {
 .brand-logo {
   width: 44px;
   height: 44px;
-
   display: grid;
   place-items: center;
-
   border-radius: 12px;
-
   background: #173f7a;
   color: white;
-
   font-weight: 800;
   letter-spacing: 1px;
 }
 
 .brand strong {
   display: block;
-
   color: #172033;
   font-size: 15px;
 }
 
 .brand small {
   display: block;
-
   color: #718096;
   font-size: 12px;
 }
-
-/* Menu */
 
 .nav-menu {
   display: flex;
@@ -99,10 +376,8 @@ a {
 
 .nav-menu a {
   color: #4a5568;
-
   font-size: 14px;
   font-weight: 600;
-
   transition: 0.25s;
 }
 
@@ -110,290 +385,178 @@ a {
   color: #173f7a;
 }
 
-
-/* =========================================================
-   HERO / BERANDA
-   ========================================================= */
+/* HERO */
 
 .hero {
   min-height: 650px;
-
   display: flex;
   align-items: center;
-
   background:
-    radial-gradient(
-      circle at 80% 25%,
-      rgba(57, 119, 211, 0.14),
-      transparent 30%
-    ),
-    linear-gradient(
-      135deg,
-      #eef5ff 0%,
-      #ffffff 58%,
-      #f4f8fd 100%
-    );
-
+    radial-gradient(circle at 80% 25%, rgba(57, 119, 211, 0.14), transparent 30%),
+    linear-gradient(135deg, #eef5ff 0%, #ffffff 58%, #f4f8fd 100%);
   overflow: hidden;
 }
 
 .hero-content {
   width: min(1150px, 92%);
   margin: auto;
-
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-
   align-items: center;
-
   gap: 70px;
-
   padding: 80px 0;
 }
-
-/* Tulisan kecil */
 
 .eyebrow,
 .section-label {
   color: #2d6bb3;
-
   font-size: 12px;
   font-weight: 800;
-
   letter-spacing: 2px;
 }
 
-/* Judul */
-
 .hero h1 {
   margin-top: 14px;
-
   max-width: 650px;
-
   color: #14213a;
-
   font-size: clamp(42px, 5vw, 68px);
-
   line-height: 1.05;
-
   letter-spacing: -2px;
 }
 
 .hero h1 span {
   display: block;
-
   color: #2164a5;
 }
 
-/* Deskripsi */
-
 .hero-description {
   max-width: 610px;
-
   margin-top: 25px;
-
   color: #5c687c;
-
   font-size: 17px;
 }
 
-/* Tombol */
-
 .hero-buttons {
   margin-top: 34px;
-
   display: flex;
   flex-wrap: wrap;
-
   gap: 13px;
 }
 
 .btn {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
-
   min-height: 48px;
-
   padding: 0 22px;
-
   border-radius: 10px;
-
   font-size: 14px;
   font-weight: 700;
-
   transition: 0.25s;
 }
-
-/* Tombol utama */
 
 .btn-primary {
   background: #173f7a;
   color: white;
-
-  box-shadow:
-    0 8px 22px rgba(23, 63, 122, 0.18);
+  box-shadow: 0 8px 22px rgba(23, 63, 122, 0.18);
 }
 
 .btn-primary:hover {
   background: #0e315f;
-
   transform: translateY(-2px);
 }
 
-/* Tombol outline */
-
 .btn-outline {
   border: 1px solid #cbd5e1;
-
   background: white;
-
   color: #173f7a;
 }
 
 .btn-outline:hover {
   border-color: #173f7a;
-
   transform: translateY(-2px);
 }
 
-
-/* =========================================================
-   FOTO PROFIL
-   ========================================================= */
+/* FOTO */
 
 .hero-photo {
   position: relative;
-
   max-width: 470px;
-
   margin-left: auto;
 }
 
 .photo-frame {
   position: relative;
-
   padding: 13px;
-
   border-radius: 26px;
-
   background: white;
-
-  box-shadow:
-    0 25px 60px rgba(32, 57, 92, 0.18);
-
+  box-shadow: 0 25px 60px rgba(32, 57, 92, 0.18);
   transform: rotate(2deg);
 }
 
-/* Border luar foto */
-
 .photo-frame::before {
   content: "";
-
   position: absolute;
-
   inset: -14px;
-
   border: 2px solid rgba(45, 107, 179, 0.18);
-
   border-radius: 31px;
-
   z-index: -1;
 }
 
-/* Foto */
-
 .photo-frame img {
   display: block;
-
   width: 100%;
   height: 520px;
-
   object-fit: cover;
-
   object-position: center;
-
   border-radius: 17px;
 }
 
-/* Badge di foto */
-
 .photo-badge {
   position: absolute;
-
   left: -25px;
   bottom: 28px;
-
   width: 235px;
-
   padding: 15px 18px;
-
   background: white;
-
   border-radius: 13px;
-
-  box-shadow:
-    0 15px 35px rgba(32, 57, 92, 0.18);
+  box-shadow: 0 15px 35px rgba(32, 57, 92, 0.18);
 }
 
 .photo-badge strong {
   display: block;
-
   color: #173f7a;
-
   font-size: 14px;
 }
 
 .photo-badge span {
   display: block;
-
   margin-top: 3px;
-
   color: #718096;
-
   font-size: 12px;
-
   line-height: 1.4;
 }
 
-
-/* =========================================================
-   INFORMASI SINGKAT
-   ========================================================= */
+/* INFO */
 
 .quick-info {
   width: min(1150px, 92%);
-
   margin: -35px auto 0;
-
   position: relative;
-
   z-index: 5;
-
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
   background: white;
-
   border: 1px solid #e5eaf1;
-
   border-radius: 16px;
-
-  box-shadow:
-    0 18px 45px rgba(35, 56, 85, 0.09);
-
+  box-shadow: 0 18px 45px rgba(35, 56, 85, 0.09);
   overflow: hidden;
 }
 
 .info-box {
   display: flex;
-
   gap: 13px;
-
   padding: 25px 20px;
-
   border-right: 1px solid #edf0f5;
 }
 
@@ -403,52 +566,39 @@ a {
 
 .info-number {
   color: #2d6bb3;
-
   font-size: 13px;
   font-weight: 800;
 }
 
 .info-box strong {
   display: block;
-
   color: #1d293d;
-
   font-size: 13px;
 }
 
 .info-box p {
   margin-top: 3px;
-
   color: #718096;
-
   font-size: 12px;
-
   line-height: 1.4;
 }
 
-
-/* =========================================================
-   SECTION UMUM
-   ========================================================= */
+/* SECTION */
 
 .section {
   width: min(1150px, 92%);
-
   margin: auto;
-
   padding: 105px 0;
 }
 
 .section-heading {
   max-width: 680px;
-
   margin-bottom: 45px;
 }
 
 .section-heading.center {
   margin-left: auto;
   margin-right: auto;
-
   text-align: center;
 }
 
@@ -456,13 +606,9 @@ a {
 .about-title h2,
 .contact-section h2 {
   margin-top: 8px;
-
   color: #14213a;
-
   font-size: clamp(32px, 4vw, 48px);
-
   line-height: 1.1;
-
   letter-spacing: -1px;
 }
 
@@ -473,120 +619,78 @@ a {
 
 .section-heading > p:last-child {
   margin-top: 14px;
-
   color: #718096;
 }
 
-
-/* =========================================================
-   PROFIL / DATA DIRI
-   ========================================================= */
+/* PROFIL */
 
 .profile-grid {
   display: grid;
-
   grid-template-columns: 340px 1fr;
-
   gap: 30px;
-
   align-items: stretch;
 }
-
-/* Kartu foto */
 
 .profile-card,
 .data-card {
   background: white;
-
   border: 1px solid #e5eaf1;
-
   border-radius: 20px;
-
-  box-shadow:
-    0 15px 40px rgba(35, 56, 85, 0.06);
+  box-shadow: 0 15px 40px rgba(35, 56, 85, 0.06);
 }
 
 .profile-card {
   padding: 35px 25px;
-
   text-align: center;
 }
-
-/* Foto bulat */
 
 .profile-avatar {
   width: 150px;
   height: 150px;
-
   margin: 0 auto 20px;
-
   padding: 6px;
-
   border-radius: 50%;
-
   background: #e9f2ff;
 }
 
 .profile-avatar img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   object-position: center;
-
   border-radius: 50%;
 }
 
 .profile-card h3 {
   color: #172033;
-
   font-size: 20px;
 }
 
 .nim {
   margin-top: 3px;
-
   color: #718096;
-
   font-size: 13px;
 }
 
-/* Status */
-
 .status {
   width: fit-content;
-
   margin: 16px auto 0;
-
   padding: 7px 12px;
-
   border-radius: 20px;
-
   background: #eef8f2;
-
   color: #28784a;
-
   font-size: 12px;
-
   font-weight: 700;
 }
 
 .status-dot {
   display: inline-block;
-
   width: 7px;
   height: 7px;
-
   margin-right: 5px;
-
   border-radius: 50%;
-
   background: #35a963;
 }
-
-
-/* Data diri */
 
 .data-card {
   padding: 12px 28px;
@@ -594,15 +698,10 @@ a {
 
 .data-row {
   min-height: 65px;
-
   display: grid;
-
   grid-template-columns: 180px 1fr;
-
   align-items: center;
-
   gap: 20px;
-
   border-bottom: 1px solid #edf0f5;
 }
 
@@ -612,51 +711,37 @@ a {
 
 .data-row span {
   color: #718096;
-
   font-size: 13px;
 }
 
 .data-row strong {
   color: #27364d;
-
   font-size: 14px;
 }
 
-
-/* =========================================================
-   TENTANG SAYA
-   ========================================================= */
+/* TENTANG */
 
 .about-section {
   width: 100%;
   max-width: none;
-
-  padding-left:
-    max(4%, calc((100% - 1150px) / 2));
-
-  padding-right:
-    max(4%, calc((100% - 1150px) / 2));
-
+  padding-left: max(4%, calc((100% - 1150px) / 2));
+  padding-right: max(4%, calc((100% - 1150px) / 2));
   background: #edf5ff;
 }
 
 .about-content {
   display: grid;
-
   grid-template-columns: 0.8fr 1.2fr;
-
   gap: 80px;
 }
 
 .about-title h2 {
   margin-top: 10px;
-
   max-width: 420px;
 }
 
 .about-text {
   color: #536174;
-
   font-size: 16px;
 }
 
@@ -668,10 +753,7 @@ a {
   color: #24334a;
 }
 
-
-/* =========================================================
-   FOKUS / KEAHLIAN
-   ========================================================= */
+/* FOKUS */
 
 .focus-section {
   background: #f7f9fc;
@@ -679,96 +761,64 @@ a {
 
 .focus-grid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
   gap: 22px;
 }
 
 .focus-card {
   padding: 32px;
-
   background: white;
-
   border: 1px solid #e5eaf1;
-
   border-radius: 18px;
-
   transition: 0.25s;
 }
 
 .focus-card:hover {
   transform: translateY(-5px);
-
-  box-shadow:
-    0 18px 40px rgba(35, 56, 85, 0.1);
+  box-shadow: 0 18px 40px rgba(35, 56, 85, 0.1);
 }
 
 .focus-icon {
   width: 52px;
   height: 52px;
-
   display: grid;
-
   place-items: center;
-
   margin-bottom: 20px;
-
   border-radius: 14px;
-
   background: #eaf3ff;
-
   color: #2164a5;
-
   font-size: 23px;
-
   font-weight: 800;
 }
 
 .focus-card h3 {
   color: #1c2b42;
-
   font-size: 18px;
 }
 
 .focus-card p {
   margin-top: 9px;
-
   color: #718096;
-
   font-size: 14px;
 }
 
-
-/* =========================================================
-   KONTAK
-   ========================================================= */
+/* KONTAK */
 
 .contact-section {
   width: min(1150px, 92%);
-
   margin: 0 auto 80px;
-
   padding: 50px 55px;
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   gap: 30px;
-
   border-radius: 22px;
-
   background: #173f7a;
-
   color: white;
 }
 
 .contact-section h2 {
   color: white;
-
   margin-top: 6px;
 }
 
@@ -778,33 +828,20 @@ a {
 
 .contact-section > div > p:last-child {
   margin-top: 8px;
-
   color: #d8e6f7;
 }
 
-/* Tombol email */
-
 .contact-button {
   display: inline-flex;
-
   align-items: center;
-
   min-height: 50px;
-
   padding: 0 20px;
-
   border-radius: 10px;
-
   background: white;
-
   color: #173f7a;
-
   font-size: 14px;
-
   font-weight: 700;
-
   white-space: nowrap;
-
   transition: 0.25s;
 }
 
@@ -812,23 +849,14 @@ a {
   transform: translateY(-2px);
 }
 
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
+/* FOOTER */
 
 .footer {
-  padding: 35px
-    max(4%, calc((100% - 1150px) / 2));
-
+  padding: 35px max(4%, calc((100% - 1150px) / 2));
   display: flex;
-
   justify-content: space-between;
-
   gap: 25px;
-
   background: #101b2e;
-
   color: white;
 }
 
@@ -838,19 +866,13 @@ a {
 
 .footer p {
   margin-top: 3px;
-
   color: #aab6c8;
-
   font-size: 12px;
 }
 
-
-/* =========================================================
-   RESPONSIVE - TABLET
-   ========================================================= */
+/* RESPONSIVE */
 
 @media (max-width: 900px) {
-
   .nav-menu {
     gap: 16px;
   }
@@ -866,7 +888,6 @@ a {
 
   .hero-photo {
     margin: auto;
-
     width: min(450px, 100%);
   }
 
@@ -888,9 +909,7 @@ a {
 
   .profile-card {
     max-width: 450px;
-
     margin: auto;
-
     width: 100%;
   }
 
@@ -900,23 +919,14 @@ a {
 
   .contact-section {
     flex-direction: column;
-
     align-items: flex-start;
   }
 }
 
-
-/* =========================================================
-   RESPONSIVE - HP
-   ========================================================= */
-
 @media (max-width: 650px) {
-
   .navbar {
     min-height: auto;
-
     padding: 15px 0;
-
     align-items: flex-start;
   }
 
@@ -942,19 +952,16 @@ a {
 
   .photo-badge {
     left: 12px;
-
     bottom: 20px;
   }
 
   .quick-info {
     grid-template-columns: 1fr;
-
     margin-top: -25px;
   }
 
   .info-box {
     border-right: none;
-
     border-bottom: 1px solid #edf0f5;
   }
 
@@ -972,9 +979,7 @@ a {
 
   .data-row {
     grid-template-columns: 1fr;
-
     gap: 3px;
-
     padding: 14px 0;
   }
 
@@ -984,7 +989,6 @@ a {
 
   .contact-section {
     padding: 35px 25px;
-
     margin-bottom: 55px;
   }
 
@@ -996,3 +1000,16 @@ a {
     flex-direction: column;
   }
 }
+'''
+
+(base / "index.html").write_text(html, encoding="utf-8")
+(base / "style.css").write_text(css, encoding="utf-8")
+
+# Make a ZIP that can be extracted directly in VS Code
+zip_path = Path("/mnt/data/Profil_Ilham_Ikhwanul_Anam_VSCode.zip")
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+    for file in base.iterdir():
+        z.write(file, arcname=file.name)
+
+print(f"Folder dibuat: {base}")
+print(f"ZIP dibuat: {zip_path}")
